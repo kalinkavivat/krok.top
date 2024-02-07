@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dark Page</title>
+  <style>
+    body {
+      color: #fff;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      position: relative;
+      background-color: #000;
+    }
+
+    header, footer {
+      width: 100%;
+      padding: 20px 0;
+      text-align: center;
+    }
+
+    header {
+      background-color: #888;
+      color: #000;
+    }
+
+    footer {
+      background-color: #888;
+      color: #fff;
+    }
+
+    .columns {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 1200px;
+      margin-top: 20px;
+    }
+
+    .column {
+      flex: 1;
+      padding: 10px;
+      border: 1px solid transparent; /* Делаем границы колонок прозрачными */
+      box-sizing: border-box;
+    }
+
+    .telegram-icon {
+      position: absolute;
+      bottom: 10px;
+    }
+
+    .telegram-icon img {
+      width: 80px;
+      height: auto;
+    }
+
+    .toggle-button {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      padding: 8px;
+      background-color: #fff;
+      color: #000;
+      border: none;
+      cursor: pointer;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1 style="color: #fff;">Продам Родину за Дорого</h1>
+</header>
+
+<div class="columns">
+  <div class="column">
+    <h2>первый</h2>
+    <h2>первый</h2>
+    <h2>первый</h2>
+  </div>
+
+  <div class="column">
+    <h2>второй</h2>
+    <h2>второй</h2>
+    <h2>второй</h2>
+    <h2>второй</h2>
+  </div>
+
+  <div class="column">
+    <h2>третий</h2>
+    <h2>третий</h2>
+    <h2>третий</h2>
+  </div>
+</div>
+
+<footer>
+  <a class="telegram-icon" href="https://t.me/your_telegram_link" target="_blank"><img src="telegram-icon.png" alt="Telegram Icon"></a>
+</footer>
+
+<button class="toggle-button" onclick="toggleBackground()">Изменить цвет фона</button>
+
+<script>
+  function toggleBackground() {
+    var body = document.body;
+    var currentColor = body.style.backgroundColor;
+    if (currentColor === 'rgb(0, 0, 0)' || currentColor === '#000') {
+      body.style.backgroundColor = '#888';
+      body.style.color = '#000';
+      document.querySelector('header').style.backgroundColor = '#888';
+      document.querySelector('header h1').style.color = '#000';
+      document.querySelector('footer').style.backgroundColor = '#888';
+      document.querySelector('footer').style.color = '#fff';
+      var columns = document.querySelectorAll('.column');
+      columns.forEach(function(column) {
+        column.style.border = '1px solid rgba(0, 0, 0, 0)'; // Цвет границы сделан прозрачным
+      });
+    } else {
+      body.style.backgroundColor = '#000';
+      body.style.color = '#fff';
+      document.querySelector('header').style.backgroundColor = '#000';
+      document.querySelector('header h1').style.color = '#fff';
+      document.querySelector('footer').style.backgroundColor = '#000';
+      document.querySelector('footer').style.color = '#fff';
+      var columns = document.querySelectorAll('.column');
+      columns.forEach(function(column) {
+        column.style.border = '1px solid transparent'; // Возвращаем прозрачные границы
+      });
+    }
+  }
+</script>
+
+</body>
+</html>
